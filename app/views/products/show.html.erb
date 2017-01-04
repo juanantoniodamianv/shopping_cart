@@ -1,0 +1,161 @@
+
+
+<div class="container">
+    <div class="row">
+    <% if user_signed_in? %>
+                            <%= link_to 'Volver al Listado <i class="fa fa-hand-o-left fa-1x" aria-hidden="true"></i>'.html_safe, products_path,class: 'btn btn-default', title:"Volver"  %> 
+                      
+                           <%= link_to 'Editar Producto <i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i>
+'.html_safe, edit_product_path(@product),class: 'btn btn-default', title:"Editar"  %>                            
+         
+<%end%>
+  </div>
+
+</div>
+<br/>
+
+
+                    
+        
+                  
+           
+<div class="container">
+  
+        <div id="main_area">
+                <!-- Slider -->
+                <div class="row">
+                    <div class="col-xs-12" id="slider">
+                        <!-- Top part of the slider -->
+                        <div class="row">
+                            <div class="col-sm-8" id="carousel-bounding-box">
+                                <div class="carousel slide" id="myCarousel">
+                                    <!-- Carousel items -->
+                                    <div class="carousel-inner">
+
+
+  <!-- contenido que se muestra en el slaider-->
+
+      <% @product.galleries.each do |p| %>
+         <% if p.image_check ==true %>
+                  <div class="active item" data-slide-number="<%=p.id%>">
+                  <%=image_tag(p.photo.url, width: "64", height: "85") %>
+             
+                  </div>
+              <%else%>
+                 <div class="item" data-slide-number="<%=p.id%>">
+                  <%=image_tag(p.photo.url, width: "64", height: "85") %>
+             
+                  </div>
+              <%end%>
+     <%end%>
+
+  <!-- end contenido que se muestra en el slaider-->
+
+
+
+                                    </div><!-- Carousel nav -->
+
+                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>                                       
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>                                       
+                                    </a>                                
+                                    </div>
+                            </div>
+
+                            <div class="col-sm-4" id="carousel-text">
+
+
+                            </div>
+
+                            <div id="slide-content" ">
+
+                            <!-- bloque que repite-->
+                          
+                                          <div class="desc1">
+                              <h3> <%= @product.name %> </h3>
+                              <p> <%= @product.description %>.</p>
+                              <h5>$.  <%= @product.price %> </h5>
+                              <div class="available">
+
+
+                              <div class="price">
+                              <h4><span><%=  link_to 'Add to Cart', add_shop_path(@product),class: "cart_add",remote: true, method: :post  %></span></h4>
+                              </div>
+
+                              <div class="clear"></div>
+                              </div>
+
+                              </div>
+                            <!-- bloque que repite-->
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/Slider-->
+                
+                <div class="row hidden-xs" id="slider-thumbs">
+                        <!-- Bottom switcher of slider -->
+                        <ul class="hide-bullets">
+                          <% @product.galleries.each do |p| %>
+                            <li class="col-xs-2">
+                                <a class="thumbnail" id="carousel-selector-<%=p.id%>"><%=image_tag(p.photo.url) %></a>
+                            </li>
+                            <%end%>
+
+                           
+
+                           
+
+                        </ul>                 
+                </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</d iv>
+    
+
+

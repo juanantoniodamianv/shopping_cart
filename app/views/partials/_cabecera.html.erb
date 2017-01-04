@@ -1,0 +1,55 @@
+<div class="header_bg">
+<div class="wrap">
+	<div class="header">
+			<div class="row">
+				<div class="col-md-2">
+			
+
+				</div>
+				<div class="col-md-2 col-md-offset-8">
+				<% if cookies[:budget_id] %>
+					<%= link_to shop_path( cookies[:budget_id] ),class: "quick-btn" do %>
+						<i class="fa fa-shopping-cart fa-2x"></i> 
+						<span>$ <%= cookies[:moneda_total]%></span>
+						<% if cookies[:total_cart]%>
+						<span class="label label-default"><%= cookies[:total_cart] %></span>
+
+
+						<% end %>
+					<%end%>
+
+				<%else%>
+					<a class="quick-btn" href="#">
+					<i class="fa fa-shopping-cart fa-2x"></i>
+					<span>$ 0</span>
+						
+							<span class="label label-default">0</span>
+							
+							
+					
+					
+					</a>
+
+				<%end%>
+			
+	
+
+				</div>
+			</div>
+
+
+
+	
+
+
+	
+		</div>
+		<div class="clear"></div>
+
+
+
+
+	</div>
+</div>
+</div>
+

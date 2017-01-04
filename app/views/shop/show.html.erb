@@ -1,0 +1,75 @@
+
+
+<% @total =0%>
+<div class="container">
+      
+       
+          <%= link_to 'Imprimir <i class="fa fa-print" aria-hidden="true"></i>'.html_safe, pdf_shop_path(format: :pdf), :target => '_blank',class: 'btn btn-default'  %>  <span>
+  <table class="table">
+    <thead>
+      <tr>
+      <th></th>
+        <th>Producto</th>
+        <th>cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="detalleview">
+
+
+    <% @presupuesto.budget_details.each do |detalle| %>
+      <tr>
+      <td>
+
+        <% detalle.product.galleries.each do |gallery|%>
+
+            <%if gallery.image_check ==true %>
+               <%=image_tag(gallery.photo.url) %>
+            <%end%>
+        <%end%>
+     
+
+
+      </td>
+        <td><%= detalle.product.name	 %>	</td>
+
+        <td><%= detalle.cant %> </td>
+
+        <td><%= number_to_currency(detalle.product.price) %></td>
+        <td><%= number_to_currency(detalle.cant * detalle.product.price) %></td>
+
+        <td><%=  link_to '<i class="fa fa-minus" aria-hidden="true"></i>'.html_safe,  restar_shop_path(detalle),remote: true, class: 'btn btn-default btn-smtag-tooltip',:data => {:toggle=>"tooltip"},
+                    'data-original-title' => "Restar", method: :post  %>  
+         <%=  link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, suma_shop_path(detalle),remote: true,  class: 'btn btn-default btn-smtag-tooltip',:data => {:toggle=>"tooltip"},
+                    'data-original-title' => "sumar", method: :post  %></td>
+
+        <td><%=  link_to '<i class="fa fa-trash-o " aria-hidden="true"></i>'.html_safe, deletedetalle_shop_path(detalle), remote: true,class: 'btn btn-default btn-smtag-tooltip',:data => {:toggle=>"tooltip"},
+                    'data-original-title' => "Eliminar detalle", method: :post  %></td>
+        
+     
+
+
+        <% @total = @total + (detalle.cant * detalle.product.price) %>
+      </tr>
+     
+      <%end%>
+      <tr>
+		<td></td>
+		<td></td>
+		<td>Total</td>
+    <td></td>
+		<td> <h4> <%= number_to_currency(@total) %></h4>  </td>
+      </tr>
+
+
+    </tbody>
+
+
+
+    
+  </table>
+</div>
+
+
+

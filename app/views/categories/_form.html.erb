@@ -1,0 +1,47 @@
+<%= form_for(category,  remote: request.xhr?, html: { data: { modal: true } }) do |f| %>
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="form-group <%= @category.errors[:legajo].any? ? " has-error has-feedback" : "" %>">
+ <div class="field">
+    <%= f.label :name, "Categoria" %>
+    <%= f.text_field :name , autofocus: true, :class=>"form-control " ,placeholder: "Categoria"%>
+      <%if @category.errors[:name].any? %>
+                                        <span class="glyphicon  form-control-feedback"><i class="fa fa-exclamation" aria-hidden="true"></i>
+                                        </span>
+                                        <p class="bg-warning"><%= @category.errors[:name].to_s[/\w([^"]*)/] %></p>
+                                <% end %>
+  </div>
+  </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-8">
+        
+           <%= f.submit  :value=>"Guardar", :class=>".btn btn-info btn-lg"%>
+
+  </div>
+</div>
+<% end %>

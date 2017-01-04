@@ -1,0 +1,42 @@
+
+
+<% @total =0%>
+<div class="container">
+         
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="detalleview">
+    <% @presupuesto.budget_details.each do |detalle| %>
+      <tr>
+        <td><%= detalle.product.name	 %>	</td>
+        <td><%= detalle.cant	 %>	</td>
+        <td><%= number_to_currency(detalle.product.price) %></td>
+        <td><%= number_to_currency(detalle.cant * detalle.product.price) %></td>
+        <td><%=  link_to 'restar', restar_shop_path(detalle),remote: true, class: 'btn btn-default btn-sm', method: :post  %></td>
+        <td><%=  link_to 'suma', suma_shop_path(detalle),remote: true,  class: 'btn btn-default btn-sm', method: :post  %></td>
+        <td><%=  link_to 'eliminar', deletedetalle_shop_path(detalle), remote: true,class: 'btn btn-default btn-sm', method: :post  %></td>
+        <% @total = @total + (detalle.cant * detalle.product.price) %>
+      </tr>
+     
+      <%end%>
+      <tr>
+		<td></td>
+		<td></td>
+		<td>Total</td>
+    <td></td> 
+   
+		<td><%= number_to_currency(@total) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+

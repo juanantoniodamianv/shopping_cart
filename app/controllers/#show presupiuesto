@@ -1,0 +1,29 @@
+#show presupiuesto
+
+
+<h1>mostrand presupuesto </h1>
+fecha <%= @presupuesto.fecha%>
+
+<table>
+</table>
+
+
+iteracion en la tabla
+
+<% presupuesto.presupuesto_detales each do |detalle| %>
+
+<%=	detalle.producto.nombre %>
+<%= detalle.cantidad %>
+<%= numbre_to_currency detalle.precio%>
+<%= numbre_to_currency detalle.cantidad * detalle.producto.precio%>
+
+
+
+
+///////****************************/
+
+class presupuesto
+
+	througt: presupuesto_detalle
+
+	gem 'bullet'

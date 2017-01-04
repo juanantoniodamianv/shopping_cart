@@ -1,0 +1,40 @@
+
+
+<% @total =0%>
+<div class="container">
+      
+  <table class="table table-striped">
+    <thead>
+      <tr>
+    
+        <th>Producto</th>
+        <th>cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="detalleview">
+    <% @presupuesto.budget_details.each do |detalle| %>
+      <tr>
+
+        <td><%= detalle.product.name	 %>	</td>
+        <td><%= detalle.cant	 %>	</td>
+        <td><%= number_to_currency(detalle.product.price) %></td>
+        <td><%= number_to_currency(detalle.cant * detalle.product.price) %></td>
+
+        
+     
+        <% @total = @total + (detalle.cant * detalle.product.price) %>
+      </tr>
+     
+      <%end%>
+      <tr>
+		<td></td>
+		<td></td>
+		<td>Total</td>
+		<td><%= number_to_currency(@total) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

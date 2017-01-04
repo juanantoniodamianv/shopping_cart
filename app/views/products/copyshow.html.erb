@@ -1,0 +1,143 @@
+
+
+<!-- start main -->
+<div class="main_bg">
+<div class="wrap">  
+  <div class="main">
+  <!-- start content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="single">
+      <!-- start span1_of_1 -->
+      <div class="left_content"><!-- el contennido del producto -->
+
+
+
+      <div class="span1_of_1"><!-- las imagenes del product con las preview de las otras imagenes -->
+        <!-- start product_slider -->
+        <div class="product-view">
+            <div class="product-essential">
+                <div class="product-img-box">
+
+<!-- 
+mini views
+-->
+<div class="col-md-3">
+      <div class="more-views" style="float:left;">
+                <div class="more-views-container">
+                <ul>
+                <% @product.galleries.each do |p| %>
+                    <li>
+                    <%=image_tag(p.photo.url, width: "64", height: "85")  %>
+                              
+                    </li>
+                    <%end%>
+                  </ul>
+                </div>
+            </div>
+</div>
+<div class="col-md-9">
+  <% @product.galleries.each do |p| %>
+
+
+    <% if p.image_check ==true %>
+            <div class="product-image"> 
+           
+                   
+                    <%=image_tag(p.photo.url)  %>
+
+             
+           </div>
+
+<%end%>
+<% end %>
+</div>
+
+
+
+
+            
+
+
+        
+        </div>
+        </div>
+        </div>
+        <!-- end product_slider -->
+      </div>
+      <!-- start span1_of_1 -->
+
+
+
+
+      <div class="span1_of_1_des">
+          <div class="desc1">
+          <h3> <%= @product.name %> </h3>
+          <p> <%= @product.description %>.</p>
+          <h5>$.  <%= @product.price %> </h5>
+          <div class="available">
+            
+          
+              <div class="price">
+            <h4><span><%=  link_to 'Add to Cart', add_shop_path(@product),class: "cart_add",remote: true, method: :post  %></span></h4>
+          </div>
+          
+            <div class="clear"></div>
+          </div>
+      
+           </div>
+          </div>
+          <div class="clear"></div>
+         
+          </div>
+          <!-- start sidebar -->
+    
+                <div class="clear"></div>
+         </div> 
+  <!-- end content -->
+
+
+
+
+
+
+
+
+ <div class="left_sidebar">
+          <div class="sellers">
+            <h4>Acciones</h4>
+              <div class="single-nav">
+                      <ul>
+                        <%= link_to 'Volver al Listado <i class="fa fa-hand-o-left fa-1x" aria-hidden="true"></i>'.html_safe, root_path,class: 'btn btn-default', title:"Volver"  %>  
+                        <br/><br/>
+                           <%= link_to 'Editar Producto <i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i>
+'.html_safe, edit_product_path(@product),class: 'btn btn-default', title:"Editar"  %>                            
+                      </ul>
+                    </div>
+            </div>
+            </div>
+
+
+
+
+
+
+  </div>
+</div>
+</div>    
+
+<!-- *******************************************************************************-->
+
+
+

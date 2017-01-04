@@ -1,0 +1,51 @@
+
+<div class="container">
+          <%= link_to 'Create product', new_product_path, 
+            data: { modal: true } %> 
+  <table class="table table-hover  productTable">
+    <thead>
+      <tr>
+      <th></th>
+        <th>Producto</th>
+        <th class="coldescription">Descripcion</th>
+        <th>Precio</th>
+        
+       <th>Acciones</th>
+        
+      </tr>
+    </thead>
+    <tbody >
+     <% @products.each do |product| %>
+      <tr>
+      <td>
+
+    <% product.galleries.each do |p| %>
+      <% if p.image_check ==true %>
+       <%=image_tag(p.photo.url)  %>
+       <%end%>
+    <%end%>
+       
+        
+        
+         </td>
+        <td><%= product.name %></td>
+        <td class="coldescription"><%= product.description%></td>
+        <td><%= product.price %></td>
+        <td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, product,class: 'btn btn-default'  %>  <span>
+        <%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+'.html_safe, edit_product_path(product),class: 'btn btn-default'  %>  <span>
+        <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>
+'.html_safe, product, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default'  %>  <span></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+

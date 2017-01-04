@@ -1,0 +1,99 @@
+
+
+
+<%= form_for(product,remote: request.xhr?, html: { data: { modal: true } }) do |f| %>
+
+
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-10 col-md-offet-2">
+          <div class="form-group <%= @product.errors[:name].any? ? " has-error has-feedback" : "" %>">
+              <%= f.label :name, "Nombre"  %>
+              <%= f.text_field :name , autofocus: true, :class=>"form-control " ,placeholder: "Nombre"%>
+                    <%if @product.errors[:name].any? %>
+                                        <span class="glyphicon  form-control-feedback"><i class="fa fa-exclamation" aria-hidden="true"></i>
+                                        </span>
+                                        <p class="bg-warning"><%= @product.errors[:name].to_s[/\w([^"]*)/] %></p>
+                                <% end %>
+          </div>
+
+
+
+
+
+
+          <div class="form-group  <%= @product.errors[:description].any? ? " has-error has-feedback" : "" %>">
+              <%= f.label :description, "Descripcion"  %>
+              <%= f.text_area :description , autofocus: true, :class=>"form-control ", :rows=>"2" ,placeholder: "Descripcion"%>
+                <%if @product.errors[:description].any? %>
+                                        <span class="glyphicon  form-control-feedback"><i class="fa fa-exclamation" aria-hidden="true"></i>
+                                        </span>
+                                        <p class="bg-warning"><%= @product.errors[:description].to_s[/\w([^"]*)/] %></p>
+                                <% end %>
+          </div>
+
+
+          <div class="row">
+             <div class="col-md-4">
+                 <div class="form-group <%= @product.errors[:price].any? ? " has-error has-feedback" : "" %>">
+              <%= f.label :price, "Precio"  %>
+              <%= f.text_field :price , autofocus: true, :class=>"form-control " ,placeholder: "Precio"%>
+                <%if @product.errors[:price].any? %>
+                                        <span class="glyphicon  form-control-feedback"><i class="fa fa-exclamation" aria-hidden="true"></i>
+                                        </span>
+                                        <p class="bg-warning"><%= @product.errors[:price].to_s[/\w([^"]*)/] %></p>
+                                <% end %>
+          </div>
+
+
+
+
+             </div>
+             <div class="col-md-4">
+               <div class="form-group">
+              <%= f.label :category, "Categoria"  %>
+              <br>
+              <%=
+              f.collection_select( :category_id, Category.all, :id, :name, prompt: "Seleccione una categoria",class: "form-control input-md")
+              %>
+          </div>
+
+             </div>
+          </div>
+         
+        
+         <div class="col">
+           <div class="col-md-6">
+             <div class="form-group ">
+                      <%= f.fields_for :galleries do |gallery| %>
+                          <%= render 'gallery_fields', f: gallery %>
+                      <%end%>  
+                      <%= link_to_add_fields 'Agregar Imagen <i class="fa fa-plus fa-1x" aria-hidden="true"></i>'.html_safe, f, :galleries %>
+             
+           </div>
+          
+         </div>
+
+    </div>
+
+      
+
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-8">
+        
+           <%= f.submit  :value=>"Guardar", :class=>".btn btn-info btn-lg"%>
+
+  </div>
+</div>
+
+
+
+</div>
+
+
+
+<% end %>
+
+

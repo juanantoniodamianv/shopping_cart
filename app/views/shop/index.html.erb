@@ -1,0 +1,127 @@
+
+<div class="main_bg">
+<div class="wrap">	
+	<div class="main">
+
+	
+
+
+
+
+
+
+
+       
+
+
+
+
+<div class="row">
+
+  <% if flash[:success] %>
+
+     <% end %> 
+
+</div>
+
+
+
+  <% if flash[:notification] %>
+  <div class="alert alert-success "><%= flash[:notification] %></div>
+
+  <% end %>
+<div class="col-md-9">
+        <% @products.each do |product| %>
+        
+                <%= render 'producto', product: product %>
+          
+
+
+        <% end %>
+</div>
+<div class="col-md-3">
+<div class="panel panel-default">
+  <div class="panel-body">
+
+
+         <%= search_form_for @search, :url => { :action => :index } do |f| %>
+
+
+
+            <div class="row">
+            <div class="col-md-12">
+                  <div class="form-group">
+                  <%= f.label :name_cont, "Producto" %>
+                  <%= f.search_field :name_cont, :class=>"form-control input-sm"%>
+                  </div>
+            </div>
+            </div>
+              
+
+           
+
+<div class="row">
+<div class="col-md-12">
+    <div class="form-group">
+               <%= f.label :category_name_start, "Categoria" %>
+
+          <%= f.search_field :category_name_start,:class=>"form-control input-sm" %>
+  </div>
+</div>
+
+</div>
+
+
+<div class="row">
+<div class="col-md-12">
+ <%= f.label :price_gteq, "Rango de Precios" %>
+</div>
+  <div class="col-md-6">
+<div class="form-group">
+  <%= f.search_field :price_gteq , :class=>"form-control input-sm"%>
+</div>
+  </div>
+
+  <div class="col-md-6">
+
+<div class="form-group">
+   <%= f.search_field :price_lteq , :class=>"form-control input-sm"%> 
+</div>
+  </div>
+</div>
+
+
+
+
+          <div class="actions"><%= f.submit :value=>"Buscar", :class=>".btn btn-default btn-sm btn-block" %></div>
+
+          </div>
+
+         
+        <% end %>
+  </div>
+</div>
+</div>
+
+
+					
+
+
+		</div>
+</div>
+</div>
+         <script>
+    //   $(document).ready(function() {
+    //        setTimeout(function() {
+    //     $(".disappear").fadeOut(1500);
+    // },2000);
+    //        $('button').click(function(){
+    //     $('.alert').show()
+    // }) 
+
+    //     });
+    </script>
+
+
+
+

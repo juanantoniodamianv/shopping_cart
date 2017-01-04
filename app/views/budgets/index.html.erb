@@ -1,0 +1,74 @@
+<div class="container">
+  
+
+
+
+<div class="panel-group" id="accordion">
+
+<% @budgets.each do |budget| %>
+<% @total =0 %>
+
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=budget.id%>">
+        <div class="container">
+          <%= budget.id%> - <%= budget.fecha %>
+        </div>
+        </a>
+      </h4>
+    </div>
+
+    <div id="collapse<%=budget.id%>" class="panel-collapse collapse">
+
+<div class="container">
+            
+  <table class="table table-hover">
+    <thead>
+      <tr>
+    
+        <th>Producto</th>
+        <th>cantidad</th>
+        <th>Precio</th>
+        <th>Sub Total</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% budget.budget_details.each do |detail| %>
+      <tr>
+
+
+        <td><%= detail.product.name %></td>
+        <td><%= detail.cant%></td>
+        <td><%= number_to_currency(detail.product.price) %></td>
+        <td><%= number_to_currency(detail.cant * detail.product.price) %></td>
+        <% @total = @total + (detail.cant * detail.product.price) %>
+      </tr>
+<%end%>
+       <tr>
+    <td></td>
+    <td></td>
+    <td>Total</td>
+    <td><%= number_to_currency(@total) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+    </div>
+  </div>
+
+
+<%end%>
+
+</div>
+
+
+</div>
+
+
+
+

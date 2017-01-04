@@ -1,0 +1,27 @@
+
+
+
+<div class="container">
+    <div class="row">
+                            <%= link_to 'Volver al Listado <i class="fa fa-hand-o-left fa-1x" aria-hidden="true"></i>'.html_safe, categories_path,class: 'btn btn-default', title:"Volver"  %>  
+                      
+                                                      
+         
+
+  </div>
+
+</div>
+<br>
+<div class="container">
+	<div class="col-md-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Edicion de Categoria</div>
+  <div class="panel-body">
+<%= render 'form', category: @category %>
+  </div>
+</div>
+	</div>
+
+</div>
+
+
