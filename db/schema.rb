@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20161216111059) do
     t.integer  "category_id"
     t.integer  "product_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["product_id"], name: "index_products_on_product_id"
   end
 
 end

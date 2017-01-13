@@ -47,6 +47,7 @@ respond_to :html, :json
   def create
 
      @product = Product.new(product_params)
+     @product.save
      respond_modal_with @product, location: @product
  
     # respond_to do |format|

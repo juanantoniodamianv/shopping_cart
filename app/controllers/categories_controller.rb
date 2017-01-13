@@ -18,7 +18,8 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
-    respond_modal_with @category
+  
+    respond_modal_with @category_params
   end
 
   # GET /categories/1/edit
@@ -30,6 +31,8 @@ class CategoriesController < ApplicationController
   def create
     puts "la concha de la lora +++++++++++++++++++++++++++++++"
     @category = Category.new(category_params)
+      
+    @category.save
     respond_modal_with @category, location: @category
     # respond_to do |format|
     #   if @category.save
